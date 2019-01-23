@@ -12,11 +12,33 @@ import (
 	"fmt"
 	"io"
 	"strings"
+
+	"github.com/globalsign/mgo/bson"
 )
 
 // A UUID is a 128 bit (16 byte) Universal Unique IDentifier as defined in RFC
 // 4122.
 type UUID [16]byte
+
+// SetBSON allows the struct to be correctly retrieved from mongo
+func (u *UUID) SetBSON(raw bson.Raw) error {
+	var doc bson.Binary
+	raw.Unmarshal(&doc)
+	copy(u[:], doc.Data)
+	return nil
+}
+
+// GetBSON allows the struct to be correctly stored as mongo binary
+func (u *UUID) GetBSON() (interface{}, error) {
+	bytes, err := u.MarshalBinary()
+	if err != nil {
+		panic(err)
+	}
+	return bson.Binary{
+		Kind: 4,
+		Data: bytes,
+	}, nil
+}
 
 // A Version represents a UUID's version.
 type Version byte
