@@ -1,4 +1,16 @@
-# uuid ![build status](https://travis-ci.org/google/uuid.svg?branch=master)
+
+
+# uuid - forked from github.com/google/uuid
+
+## Methods added to original package
+
+ - `GetBSON` & `SetBSON` have been added such that the UUID type integrates seamlessly (hopefully) with the MongoDB driver, github.com/globalsign/mgo. Note that this specific package _must_ be used for the integration to work correctly.
+
+ - `UnmarshalParam` has been added specifically for integration with the Echo packages `Bind` method.
+
+## Original Readme
+
+
 The uuid package generates and inspects UUIDs based on
 [RFC 4122](http://tools.ietf.org/html/rfc4122)
 and DCE 1.1: Authentication and Security Services. 
@@ -9,7 +21,7 @@ a UUID is a 16 byte array rather than a byte slice.  One loss due to this
 change is the ability to represent an invalid UUID (vs a NIL UUID).
 
 ###### Install
-`go get github.com/google/uuid`
+`go get github.com/music-tribe/uuid`
 
 ###### Documentation 
 [![GoDoc](https://godoc.org/github.com/google/uuid?status.svg)](http://godoc.org/github.com/google/uuid)
