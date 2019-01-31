@@ -21,7 +21,7 @@ a UUID is a 16 byte array rather than a byte slice.  One loss due to this
 change is the ability to represent an invalid UUID (vs a NIL UUID).
 
 ###### Install
-`go get github.com/frednomoon/uuid`
+`go get github.com/music-tribe/uuid`
 
 ###### Documentation 
 [![GoDoc](https://godoc.org/github.com/google/uuid?status.svg)](http://godoc.org/github.com/google/uuid)
